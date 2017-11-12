@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/format.css">
+    
+  </head>
+  <body>
+    <div id="map">
+	<!---TODO: Pass default value--->
+		<script src="script/map_init.js">
+		</script>
+	</div>
+			
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpu6Pbn1FrHsdcEE9kNspyUz70NQ2Wmio&libraries=places&callback=initMap" async defer></script>
+    <p align = "right">
+		<input id="wheretogo" type="text">
+		<input id="updatemap" type="button" value="Update Map" onclick="updateMap();" />
+
+	</p>
+  </body>
+</html>

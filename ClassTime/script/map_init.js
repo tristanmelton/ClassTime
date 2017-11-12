@@ -94,7 +94,7 @@ function calculateDistance()
 		var speed = ddl.options[ddl.selectedIndex].value;
 		
 		var toRad = Math.PI / 180;
-		var r = 6371e3;
+		var r = 6378137;
 		var lat1 = startLoc.position.lat() * toRad;
 		var long1 = startLoc.position.lng();
 		var lat2 = endLoc.position.lat() * toRad;
@@ -108,8 +108,28 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-		var d = r * c / speed / 60;
-		alert(d.toFixed(2) + " minutes");
+		var d = r * c;// / speed / 60;
+		var directionsService = new google.maps.DirectionsService();
+
+		var request =
+		{
+			origin: startLoc.getPosition(),
+			destination: endLoc.getPosition(),
+			travelMode: google.maps.DirectionsTravelMode.WALKING
+		};
+
+		directionsService.route(request, function(request, status) 
+		{
+			if ( status === google.maps.DirectionsStatus.OK ) 
+			{
+				alert( request.routes[0].legs[0].distance.value ); // the distance in metres
+			}
+			else 
+			{
+				alert("A kitten died");
+			}
+		});
+		alert(d.toFixed(2) + " meters");
 	}	
 }
 

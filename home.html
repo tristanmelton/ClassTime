@@ -23,6 +23,7 @@
 	
 		var map;
 		var infowindow;
+		var markers = [];
 
 		function initMap(dName) 
 		{
@@ -62,24 +63,43 @@
 				map: map,
 				position: place.geometry.location
 			});
+			markers.push(marker);
 
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(place.name);
 				infowindow.open(map, this);
 			});
 		}
-		//TODO: FUNCTION CALL DOESN"T DO ANYTHING, NEED TO FIX
+
+		function removeMarkers()
+		{
+			for(var i = 0; i < markers.length; i++)
+			{
+				markers[i].setMap(null);
+			}
+			markers = [];
+		}
 		function updateMap()
 		{
-			var newInfo = document.getElementById('textbox_id').value;
-			initMap("Fowler");
-		}	
+			var newInfo = document.getElementById('wheretogo').value;
+			if(newInfo === "" || newInfo === null)
+			{
+				initMap("Hall");
+				alert("Empty or null");
+			}
+			else
+			{
+				alert(newInfo);
+				initMap(newInfo);
+			}
+		}
+	
     </script>
   </head>
   <body>
     <div id="map"></div>
-	<!---TODO: Pass default value--->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpu6Pbn1FrHsdcEE9kNspyUz70NQ2Wmio&libraries=places&callback=initMap" async defer></script>
+
     <p align = "right">
 		<input id="wheretogo" type="text">
 		<input id="updatemap" type="button" value="Update Map" onclick="updateMap();" />

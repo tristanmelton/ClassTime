@@ -58,19 +58,17 @@ function createMarker(place)
 		if(!flip)
 		{
 			startLoc = marker;
+			flip = !flip;
 		}
 		else
 		{
 			endLoc = marker;
+			flip = !flip;
 		}
 		
 		infowindow.setContent(place.name);
 		infowindow.open(map, this);
 	});
-}
-function flipToggler()
-{
-	flip = !flip;
 }
 function calculateDistance()
 {
@@ -80,7 +78,7 @@ function calculateDistance()
 	}
 	else
 	{
-		var toRad = 3.14159265358979323846264338327950 / 180;
+		var toRad = Math.PI / 180;
 		var r = 6371e3;
 		var lat1 = startLoc.position.lat() * toRad;
 		var long1 = startLoc.position.lng();
@@ -96,7 +94,7 @@ function calculateDistance()
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 		var d = r * c;
-		alert(d + " meters");
+		alert(d.toFixed(2) + " meters");
 	}	
 }
 

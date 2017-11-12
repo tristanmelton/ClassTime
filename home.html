@@ -24,6 +24,9 @@
 		var map;
 		var infowindow;
 		var markers = [];
+	
+		var startMarker;
+		var endMarker;
 
 		function initMap(dName) 
 		{
@@ -70,6 +73,10 @@
 				infowindow.open(map, this);
 			});
 		}
+		function onMarkerClick()
+		{
+			alert(marker.geometry.location);
+		}
 
 		function removeMarkers()
 		{
@@ -101,9 +108,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpu6Pbn1FrHsdcEE9kNspyUz70NQ2Wmio&libraries=places&callback=initMap" async defer></script>
 
     <p align = "right">
-		<input id="wheretogo" type="text">
+		<input id="mylocation" type="text">
 		<input id="updatemap" type="button" value="Update Map" onclick="updateMap();" />
-
+	</p>
+	<p align = "right">
+		<input id="wheretogo" type="text" value = "Where to Go...">
 	</p>
   </body>
 </html>

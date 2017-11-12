@@ -52,6 +52,6 @@ function createMarker(place)
 //TODO: FUNCTION CALL DOESN"T DO ANYTHING, NEED TO FIX
 function updateMap()
 {
-	var newInfo = document.getElementById('textbox_id').value;
-	initMap("Fowler");
+	var newInfo = document.getElementById('wheretogo').value;
+	initMap(newInfo);
 }	

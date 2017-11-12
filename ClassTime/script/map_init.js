@@ -4,7 +4,9 @@ var infowindow;
 var markers = [];
 
 var startLoc = null;
+var startLocName;
 var endLoc = null;
+var endLocName;
 
 var flip = false;
 
@@ -57,11 +59,13 @@ function createMarker(place)
 	{
 		if(!flip)
 		{
+			startLocName = place.name;
 			startLoc = marker;
 			flip = !flip;
 		}
 		else
 		{
+			endLocName = place.name;
 			endLoc = marker;
 			flip = !flip;
 		}
@@ -71,13 +75,7 @@ function createMarker(place)
 		infowindow.setContent(place.name);
 		infowindow.open(map, this);
 	});
-	marker.addListener('mouseout', function()
-	{
-		infowindow.setContent(place.name);
-		infowindow.open(map, this);
-	});
-// assuming you also want to hide the infowindow when user mouses-out
-marker.addListener('mouseout', function() {
+	marker.addListener('mouseout', function() {
     infowindow.close();
 });
 
@@ -109,6 +107,7 @@ function calculateDistance()
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 		var d = r * c;// / speed / 60;
+		var googDist = -1;
 		var directionsService = new google.maps.DirectionsService();
 
 		var request =
@@ -122,14 +121,20 @@ function calculateDistance()
 		{
 			if ( status === google.maps.DirectionsStatus.OK ) 
 			{
-				alert( request.routes[0].legs[0].distance.value ); // the distance in metres
+				googDist = request.routes[0].legs[0].distance.value;
+				if(d >=150)
+					alert(googDist + " meters");
+				alert(startLocName);
 			}
 			else 
 			{
 				alert("A kitten died");
 			}
 		});
-		alert(d.toFixed(2) + " meters");
+		if(d < 150)
+		{
+			alert(d.toFixed(2) + " meters");
+		}
 	}	
 }
 

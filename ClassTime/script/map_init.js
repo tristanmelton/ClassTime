@@ -65,19 +65,34 @@ function createMarker(place)
 			endLoc = marker;
 			flip = !flip;
 		}
-		
+	});
+	marker.addListener('mouseover', function()
+	{
 		infowindow.setContent(place.name);
 		infowindow.open(map, this);
 	});
+	marker.addListener('mouseout', function()
+	{
+		infowindow.setContent(place.name);
+		infowindow.open(map, this);
+	});
+// assuming you also want to hide the infowindow when user mouses-out
+marker.addListener('mouseout', function() {
+    infowindow.close();
+});
+
 }
 function calculateDistance()
 {
 	if(startLoc === null || endLoc === null)
 	{
-		alert("Start and end positions cannot be nothing!!!!");
+		alert("Start and end positions cannot be nothing!!!");
 	}
 	else
 	{
+		var ddl = document.getElementById("speedselect");
+		var speed = ddl.options[ddl.selectedIndex].value;
+		
 		var toRad = Math.PI / 180;
 		var r = 6371e3;
 		var lat1 = startLoc.position.lat() * toRad;
@@ -93,8 +108,8 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-		var d = r * c;
-		alert(d.toFixed(2) + " meters");
+		var d = r * c / speed / 60;
+		alert(d.toFixed(2) + " minutes");
 	}	
 }
 

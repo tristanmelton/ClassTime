@@ -9,59 +9,81 @@
        * element that contains the map. */
       #map {
         height: 100%;
+		margin: 0;
+		padding: 0;
       }
       /* Optional: Makes the sample page fill the window. */
-      html, body {
+        html, body {
         height: 100%;
         margin: 0;
         padding: 0;
-      }
+      } 
     </style>
     <script>
-      var map;
-      var infowindow;
+	
+		var map;
+		var infowindow;
 
-      function initMap() {
-        var ucla = {lat: 34.0689, lng: -118.4452};
+		function initMap(dName) 
+		{
+			var ucla = {lat: 34.0689, lng: -118.4452};
 
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: ucla,
-          zoom: 15
-        });
+			map = new google.maps.Map(document.getElementById('map'), 
+			{
+				center: ucla,
+				zoom: 15
+			});
 
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: ucla,
-          radius: 1000,
-		  name: "Hall"
-        }, callback);
-      }
+			infowindow = new google.maps.InfoWindow();
+			var service = new google.maps.places.PlacesService(map);
+			service.nearbySearch({
+				location: ucla,
+				radius: 1000,
+				name: dName
+			}, callback);
+		}
 
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-        }
-      }
+		function callback(results, status) 
+		{
+			if (status === google.maps.places.PlacesServiceStatus.OK) 
+			{
+				for (var i = 0; i < results.length; i++) 
+				{
+					createMarker(results[i]);
+				}	
+			}
+		}
+	
 
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
+		function createMarker(place) 
+		{
+			var placeLoc = place.geometry.location;
+			var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location
+			});
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(place.name);
+				infowindow.open(map, this);
+			});
+		}
+		//TODO: FUNCTION CALL DOESN"T DO ANYTHING, NEED TO FIX
+		function updateMap()
+		{
+			var newInfo = document.getElementById('textbox_id').value;
+			initMap("Fowler");
+		}	
     </script>
   </head>
   <body>
     <div id="map"></div>
+	<!---TODO: Pass default value--->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpu6Pbn1FrHsdcEE9kNspyUz70NQ2Wmio&libraries=places&callback=initMap" async defer></script>
+    <p align = "right">
+		<input id="wheretogo" type="text">
+		<input id="updatemap" type="button" value="Update Map" onclick="updateMap();" />
+
+	</p>
   </body>
 </html>

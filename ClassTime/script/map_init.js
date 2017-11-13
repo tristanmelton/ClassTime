@@ -190,7 +190,11 @@ function updateTable() {
 		leavebymin = leaveby % 60 - 1;
 		
 		leavebyhrstr = Math.trunc(leavebyhr).toString();
-		leavebyminstr = leavebymin.toPrecision(2).toString();
+		leavebyminstr = Math.trunc(leavebymin).toString();
+		if(leavebymin < 10)
+		{
+			leavebyminstr = "0" + Math.trunc(leavebymin).toString();
+		}
 		leavebystr = leavebyhrstr + ":" + leavebyminstr;
 	}
 	

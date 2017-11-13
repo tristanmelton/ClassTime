@@ -7,7 +7,7 @@ var startLoc = null;
 var startLocName;
 var endLoc = null;
 var endLocName;
-
+var d;
 var flip = false;
 
 function initMap(dName) 
@@ -106,7 +106,7 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-		var d = r * c;// / speed / 60;
+		d = r * c;// / speed / 60;
 		var googDist = -1;
 		var directionsService = new google.maps.DirectionsService();
 
@@ -124,7 +124,8 @@ function calculateDistance()
 				googDist = request.routes[0].legs[0].distance.value;
 				if(d >=150)
 					alert(googDist + " meters");
-				alert(startLocName);
+					//alert(startLocName);
+					updateTable();
 			}
 			else 
 			{
@@ -133,7 +134,7 @@ function calculateDistance()
 		});
 		if(d < 150)
 		{
-			alert(d.toFixed(2) + " meters");
+			//alert(d.toFixed(2) + " meters");
 		}
 	}	
 }
@@ -143,3 +144,16 @@ function updateMap()
 	var newInfo = document.getElementById('wheretogo').value;
 	initMap(newInfo);
 }	
+
+function updateTable() {
+	alert(d);
+	document.getElementById("startloc").innerHTML = startLocName;
+	document.getElementById("dest").innerHTML = endLocName;
+	document.getElementById("traveltime").innerHTML = d;
+	/*
+	document.getElementById("startloc").innerHTML = startLoc.place.name;
+	document.getElementById("dest").innerHTML = endLoc.place.name;
+	document.getElementById("traveltime").innerHTML = d
+	*/
+	alert(startLoc.place.name);
+}

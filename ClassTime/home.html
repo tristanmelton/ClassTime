@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="map">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 		<script src="script/map_init.js">
 		</script>
 	</div>
@@ -28,5 +29,17 @@
 			<option value=1>Slow</option>
 		</select>
 	</p>
+	<table>
+		<tr>	
+			<th>Start Location</th>
+			<th>Destination</th>
+			<th>Time Traveled</th>
+		</tr>
+		<tr>
+			<td id="startloc"></td>
+			<td id="dest"></td>
+			<td id="traveltime"></td>
+		</tr>
+	</table>
   </body>
 </html>

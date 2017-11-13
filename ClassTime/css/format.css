@@ -41,3 +41,7 @@ th{
 tr:nth-child(even) {
 	background-color: #daedec
 }
+
+.timetext {
+	width: 15px;
+}

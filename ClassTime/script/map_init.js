@@ -153,7 +153,11 @@ function calculateDistance()
 				alert("A kitten died");
 			}
 		});		
+<<<<<<< HEAD
 
+=======
+		//alert(d);
+>>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
 	}	
 }
 
@@ -164,10 +168,13 @@ function updateMap()
 }	
 
 function updateTable() {
+<<<<<<< HEAD
 		//alert("hello");
+=======
+>>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
 
-	var toa1 = document.getElementById('toa1').innerHTML;
-	var toa2 = document.getElementById('toa2').innerHTML;
+	var toa1 = document.getElementById('toa1').value;
+	var toa2 = document.getElementById('toa2').value;
 	var numtoa1;
 	var numtoa2;
 	var leaveby;
@@ -194,8 +201,8 @@ function updateTable() {
 		leavebyhr = leaveby / 60;
 		leavebymin = leaveby % 60;
 		
-		leavebyhrstr = leavebyhr.toString();
-		leavebyminstr = leavebymin.toString();
+		leavebyhrstr = leavebyhr.toPrecision(1).toString();
+		leavebyminstr = leavebymin.toPrecision(2).toString();
 		
 		alert(leavebyhr);
 		alert(leavebymin);

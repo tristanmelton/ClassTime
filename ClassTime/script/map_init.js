@@ -187,7 +187,7 @@ function updateTable() {
 				
 		leaveby = numtoa - d;
 		leavebyhr = leaveby / 60;
-		leavebymin = leaveby % 60 - 1;
+		leavebymin = leaveby % 60;
 		
 		leavebyhrstr = Math.trunc(leavebyhr).toString();
 		leavebyminstr = Math.trunc(leavebymin).toString();

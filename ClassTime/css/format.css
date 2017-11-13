@@ -1,7 +1,5 @@
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
-
-
 #map {
 	height: 80%;
 	width: 100%;
@@ -47,13 +45,9 @@ tr:hover {
 tr:nth-child(even) {
 	background-color: #daedec
 }
-<<<<<<< HEAD
-
 .timetext {
 	width: 15px;
 }
-=======
 tr:nth-child(odd) {
 	background-color: #e3fcfb
 }
->>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a

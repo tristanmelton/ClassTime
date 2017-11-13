@@ -143,29 +143,13 @@ function calculateDistance()
 			{
 				googDist = request.routes[0].legs[0].distance.value/speed/60;
 				d = (d + googDist) / 2;
-				googDist = request.routes[0].legs[0].distance.value / 60 / speed;
-				d = (d + googDist) / 2;
 				updateTable();
 			}
 			else 
 			{
 				alert("A kitten died");
 			}
-		});		
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> cfe12b04911f99f03003be85e2a2684842502894
-
-=======
-		//alert(d);
->>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
-<<<<<<< HEAD
->>>>>>> cfe12b04911f99f03003be85e2a2684842502894
-=======
->>>>>>> cfe12b04911f99f03003be85e2a2684842502894
+		});	
 	}	
 }
 
@@ -176,11 +160,6 @@ function updateMap()
 }	
 
 function updateTable() {
-<<<<<<< HEAD
-		//alert("hello");
-=======
->>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
-
 	var toa1 = document.getElementById('toa1').value;
 	var toa2 = document.getElementById('toa2').value;
 	var numtoa1;
@@ -195,7 +174,7 @@ function updateTable() {
 	numtoa1 = parseInt(toa1, 10);
 	numtoa2 = parseInt(toa2, 10);
 
-	if ((toa1 < 24 && toa1 > 0) && (toa2 > 0 && toa2 < 60)) {
+	if ((toa1 < 24 && toa1 >= 0) && (toa2 >= 0 && toa2 < 60)) {
 		
 		numtoa = numtoa1 * 60 + numtoa2 // hour and min to just min
 				
@@ -203,9 +182,9 @@ function updateTable() {
 		leavebyhr = leaveby / 60;
 		leavebymin = leaveby % 60;
 		
-		leavebyhrstr = leavebyhr.toPrecision(1).toString();
+		leavebyhrstr = Math.trunc(leavebyhr).toString();
 		leavebyminstr = leavebymin.toPrecision(2).toString();
-		
+		alert(leavebyhr);
 		leavebystr = leavebyhrstr + ":" + leavebyminstr;
 	}
 	

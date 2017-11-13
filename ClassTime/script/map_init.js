@@ -12,6 +12,8 @@ var d;
 
 var flip = false;
 
+var count = 0; // for row ids
+
 function initMap(dName) 
 {
 	var ucla = {lat: 34.0689, lng: -118.4452};
@@ -193,4 +195,20 @@ function updateTable() {
 	document.getElementById("traveltime").innerHTML = d;
 	document.getElementById("leaveby").innerHTML = leavebystr;
 	document.getElementById("traveltime").innerHTML = d.toPrecision(3);
+	count++;
+}
+
+function addrow() {
+	var table = document.getElementById("targettable");
+
+var tr = document.createElement("tr");
+var td = document.createElement("td");
+var txt = document.createTextNode("some value");
+
+td.appendChild(txt);
+tr.appendChild(td);
+table.appendChild(tr);
+	
+	
+	
 }

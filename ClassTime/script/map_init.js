@@ -143,7 +143,6 @@ function calculateDistance()
 			{
 				googDist = request.routes[0].legs[0].distance.value/speed/60;
 				d = (d + googDist) / 2;
-				//d = Math.round(d);
 				googDist = request.routes[0].legs[0].distance.value / 60 / speed;
 				d = (d + googDist) / 2;
 				updateTable();
@@ -153,7 +152,14 @@ function calculateDistance()
 				alert("A kitten died");
 			}
 		});		
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
 		//alert(d);
+>>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
+>>>>>>> cfe12b04911f99f03003be85e2a2684842502894
 	}	
 }
 
@@ -164,6 +170,10 @@ function updateMap()
 }	
 
 function updateTable() {
+<<<<<<< HEAD
+		//alert("hello");
+=======
+>>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
 
 	var toa1 = document.getElementById('toa1').value;
 	var toa2 = document.getElementById('toa2').value;
@@ -175,9 +185,6 @@ function updateTable() {
 	var leavebystr;
 	var leavebyminstr;
 	var leavebyhrstr;
-	//alert("hello");
-	alert(toa1);
-	alert(toa2);
 	
 	numtoa1 = parseInt(toa1, 10);
 	numtoa2 = parseInt(toa2, 10);
@@ -185,10 +192,7 @@ function updateTable() {
 	if ((toa1 < 24 && toa1 > 0) && (toa2 > 0 && toa2 < 60)) {
 		
 		numtoa = numtoa1 * 60 + numtoa2 // hour and min to just min
-		
-		//leavebyhr = numtoa / 60;
-		//leavebymin = numtoa % 60;
-		
+				
 		leaveby = numtoa - d;
 		leavebyhr = leaveby / 60;
 		leavebymin = leaveby % 60;
@@ -196,27 +200,8 @@ function updateTable() {
 		leavebyhrstr = leavebyhr.toPrecision(1).toString();
 		leavebyminstr = leavebymin.toPrecision(2).toString();
 		
-		alert(leavebyhr);
-		alert(leavebymin);
-		
 		leavebystr = leavebyhrstr + ":" + leavebyminstr;
 	}
-		//alert("hello");
-
-	
-	/*
-	var pass = true;
-	var arraytoa;
-	var timeformat = new RegExp('^([0][0-9]|[0-9]|[1][1-9]|[2][1-3]):[0-5][0-9]$');
-	if (timeformat.test(toa)) {
-		arraytoa = toa.split(":");
-		numtoa = arraytoa[0] + (arraytoa[1])/100;
-		numleaveby = numtoa - d;
-		splitleaveby = numleaveby.split(".");
-		leaveby = splitleaveby[0] + ":" + splitleaveby[1];
-	}
-
-	*/
 	
 	document.getElementById("traveltime").innerHTML = d;
 	document.getElementById("leaveby").innerHTML = leavebystr;

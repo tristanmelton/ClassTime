@@ -141,15 +141,15 @@ function calculateDistance()
 		{
 			if ( status === google.maps.DirectionsStatus.OK ) 
 			{
-				googDist = request.routes[0].legs[0].distance.value;
+				googDist = request.routes[0].legs[0].distance.value / 60 / speed;
 				d = (d + googDist) / 2;
+				updateTable();
 			}
 			else 
 			{
 				alert("A kitten died");
 			}
 		});		
-		alert(d);
 	}	
 }
 
@@ -160,5 +160,5 @@ function updateMap()
 }	
 
 function updateTable() {
-	document.getElementById("traveltime").innerHTML = d;
+	document.getElementById("traveltime").innerHTML = d.toPrecision(3);
 }

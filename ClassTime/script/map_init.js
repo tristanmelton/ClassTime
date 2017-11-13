@@ -106,11 +106,7 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-<<<<<<< HEAD
-		d = r * c;// / speed / 60;
-=======
-		var d = r * c / speed / 60;
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
+		d = r * c / speed / 60;
 		var googDist = -1;
 		var directionsService = new google.maps.DirectionsService();
 
@@ -126,15 +122,12 @@ function calculateDistance()
 			if ( status === google.maps.DirectionsStatus.OK ) 
 			{
 				googDist = request.routes[0].legs[0].distance.value;
-				if(d >=150)
-<<<<<<< HEAD
-					alert(googDist + " meters");
+				if(d >=150) {
+					//alert(googDist + " meters");
 					//alert(startLocName);
 					updateTable();
-=======
-					alert(googDist / speed / 60 + " minutes");
-				alert(startLocName);
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
+					//alert(googDist / speed / 60 + " minutes");
+				}
 			}
 			else 
 			{
@@ -143,11 +136,8 @@ function calculateDistance()
 		});
 		if(d < 150)
 		{
-<<<<<<< HEAD
 			//alert(d.toFixed(2) + " meters");
-=======
 			alert(d.toFixed(2) + " minutes");
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
 		}
 	}	
 }
@@ -159,14 +149,25 @@ function updateMap()
 }	
 
 function updateTable() {
-	alert(d);
+	var pass = true;
+	var toa = document.getElementById("toa").innerHTML
+	var splittoa;
+	var inttoa;
+	var decitoa;
+	
+	
+	var timeformat = ^([0-9]|1[0-9]|2[0-3]):[0-5][0-9]$;
+	if (timeformat.test(toa)) {
+		//splittoa = str.split(toa);
+		inttoa = str.split(toa);
+		decitoa = str.split(toa);
+	}
+	
+	var leaveby = ; 
+	
 	document.getElementById("startloc").innerHTML = startLocName;
 	document.getElementById("dest").innerHTML = endLocName;
 	document.getElementById("traveltime").innerHTML = d;
-	/*
-	document.getElementById("startloc").innerHTML = startLoc.place.name;
-	document.getElementById("dest").innerHTML = endLoc.place.name;
-	document.getElementById("traveltime").innerHTML = d
-	*/
-	alert(startLoc.place.name);
+
+	
 }

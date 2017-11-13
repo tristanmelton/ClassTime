@@ -67,10 +67,14 @@ function createMarker(place)
 	{
 		if(startLoc !== null && endLoc !== null)
 		{
-			startLoc.setAnimation(null);
+			if(startLoc !== marker){
+				startLoc.setAnimation(null);
+			}
 			endLoc.setAnimation(null);
 			startLoc = null;
 			endLoc = null;
+			marker.setAnimation(google.maps.Animation.BOUNCE);
+			document.getElementById("dest").innerHTML = " ";
 		}
 		if(!flip)
 		{
@@ -89,7 +93,7 @@ function createMarker(place)
 			marker.setAnimation(google.maps.Animation.BOUNCE);
 		}
 	});
-	marker.addListener('mouseover', function()
+	marker.addListener('mouseod', function()
 	{
 		infowindow.setContent(place.name);
 		infowindow.open(map, this);

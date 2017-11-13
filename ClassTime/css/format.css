@@ -17,6 +17,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	background-color: lightblue;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 table{
@@ -28,7 +29,8 @@ table{
 th, td{
 	padding: 15px;
 	text-align: left;
-	border: solid black;
+	border: solid #405d8c;
+	border-width: 4px;
 	border-collapse: collapse;
 	width: 20%;
 	
@@ -36,12 +38,23 @@ th, td{
 th{
 	background-color: #42d4f4;
 	color: white;
+	font-style: bold;
 
 }
+tr:hover {
+	background-color: #63e3ff
+}
+
 tr:nth-child(even) {
 	background-color: #daedec
 }
+<<<<<<< HEAD
 
 .timetext {
 	width: 15px;
 }
+=======
+tr:nth-child(odd) {
+	background-color: #e3fcfb
+}
+>>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a

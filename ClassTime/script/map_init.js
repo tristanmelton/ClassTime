@@ -106,7 +106,7 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-		var d = r * c;// / speed / 60;
+		var d = r * c / speed / 60;
 		var googDist = -1;
 		var directionsService = new google.maps.DirectionsService();
 
@@ -123,7 +123,7 @@ function calculateDistance()
 			{
 				googDist = request.routes[0].legs[0].distance.value;
 				if(d >=150)
-					alert(googDist + " meters");
+					alert(googDist / speed / 60 + " minutes");
 				alert(startLocName);
 			}
 			else 
@@ -133,7 +133,7 @@ function calculateDistance()
 		});
 		if(d < 150)
 		{
-			alert(d.toFixed(2) + " meters");
+			alert(d.toFixed(2) + " minutes");
 		}
 	}	
 }

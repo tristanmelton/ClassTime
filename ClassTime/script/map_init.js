@@ -152,9 +152,6 @@ function calculateDistance()
 				alert("A kitten died");
 			}
 		});		
-
-		//alert(d);
-		});	
 	}	
 }
 
@@ -165,7 +162,6 @@ function updateMap()
 }	
 
 function updateTable() {
-		//alert("hello");
 
 	var toa1 = document.getElementById('toa1').value;
 	var toa2 = document.getElementById('toa2').value;
@@ -191,7 +187,6 @@ function updateTable() {
 		
 		leavebyhrstr = Math.trunc(leavebyhr).toString();
 		leavebyminstr = leavebymin.toPrecision(2).toString();
-		alert(leavebyhr);
 		leavebystr = leavebyhrstr + ":" + leavebyminstr;
 	}
 	

@@ -7,7 +7,9 @@ var startLoc = null;
 var startLocName;
 var endLoc = null;
 var endLocName;
+
 var d;
+
 var flip = false;
 
 function initMap(dName) 
@@ -20,10 +22,6 @@ function initMap(dName)
 		zoom: 15
 	});
 	
-	//var input = document.getElementById('pac-input');
-	//var searchBox = new google.maps.places.SearchBox(input);
-	//map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
 	infowindow = new google.maps.InfoWindow();
 	var service = new google.maps.places.PlacesService(map);
 	service.nearbySearch({
@@ -31,6 +29,16 @@ function initMap(dName)
 		radius: 1000,
 		name: dName
 	}, callback);
+	if(startLoc !== null)
+	{
+		startLoc.setMap(map);
+		startLoc.setAnimation(google.maps.Animation.BOUNCE);
+	}
+	if(endLoc !== null)
+	{
+		endLoc.setMap(map);
+		endLoc.setAnimation(google.maps.Animation.BOUNCE);
+	}
 }
 
 function callback(results, status) 
@@ -57,17 +65,28 @@ function createMarker(place)
 	
 	google.maps.event.addListener(marker, 'click', function() 
 	{
+		if(startLoc !== null && endLoc !== null)
+		{
+			startLoc.setAnimation(null);
+			endLoc.setAnimation(null);
+			startLoc = null;
+			endLoc = null;
+		}
 		if(!flip)
 		{
+			document.getElementById("startloc").innerHTML = place.name;
 			startLocName = place.name;
 			startLoc = marker;
 			flip = !flip;
+			marker.setAnimation(google.maps.Animation.BOUNCE);
 		}
 		else
 		{
+			document.getElementById("dest").innerHTML = place.name;
 			endLocName = place.name;
 			endLoc = marker;
 			flip = !flip;
+			marker.setAnimation(google.maps.Animation.BOUNCE);
 		}
 	});
 	marker.addListener('mouseover', function()
@@ -106,11 +125,8 @@ function calculateDistance()
         Math.sin(dlong/2) * Math.sin(dlong/2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-<<<<<<< HEAD
-		d = r * c;// / speed / 60;
-=======
-		var d = r * c / speed / 60;
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
+
+		d = r * c / speed / 60;
 		var googDist = -1;
 		var directionsService = new google.maps.DirectionsService();
 
@@ -126,29 +142,14 @@ function calculateDistance()
 			if ( status === google.maps.DirectionsStatus.OK ) 
 			{
 				googDist = request.routes[0].legs[0].distance.value;
-				if(d >=150)
-<<<<<<< HEAD
-					alert(googDist + " meters");
-					//alert(startLocName);
-					updateTable();
-=======
-					alert(googDist / speed / 60 + " minutes");
-				alert(startLocName);
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
+				d = (d + googDist) / 2;
 			}
 			else 
 			{
 				alert("A kitten died");
 			}
-		});
-		if(d < 150)
-		{
-<<<<<<< HEAD
-			//alert(d.toFixed(2) + " meters");
-=======
-			alert(d.toFixed(2) + " minutes");
->>>>>>> c548e65bd268606bf56c65c4a4835b6c3eab50eb
-		}
+		});		
+		alert(d);
 	}	
 }
 
@@ -159,14 +160,5 @@ function updateMap()
 }	
 
 function updateTable() {
-	alert(d);
-	document.getElementById("startloc").innerHTML = startLocName;
-	document.getElementById("dest").innerHTML = endLocName;
 	document.getElementById("traveltime").innerHTML = d;
-	/*
-	document.getElementById("startloc").innerHTML = startLoc.place.name;
-	document.getElementById("dest").innerHTML = endLoc.place.name;
-	document.getElementById("traveltime").innerHTML = d
-	*/
-	alert(startLoc.place.name);
 }

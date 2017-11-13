@@ -48,13 +48,10 @@ tr:hover {
 tr:nth-child(even) {
 	background-color: #daedec
 }
-<<<<<<< HEAD
 
 .timetext {
 	width: 15px;
 }
-=======
 tr:nth-child(odd) {
 	background-color: #e3fcfb
 }
->>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a

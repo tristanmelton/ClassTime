@@ -144,8 +144,7 @@ function calculateDistance()
 				googDist = request.routes[0].legs[0].distance.value/speed/60;
 				d = (d + googDist) / 2;
 				//d = Math.round(d);
-				googDist = request.routes[0].legs[0].distance.value / 60 / speed;
-				d = (d + googDist) / 2;
+				
 				updateTable();
 			}
 			else 
@@ -153,11 +152,8 @@ function calculateDistance()
 				alert("A kitten died");
 			}
 		});		
-<<<<<<< HEAD
 
-=======
 		//alert(d);
->>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
 	}	
 }
 
@@ -168,10 +164,7 @@ function updateMap()
 }	
 
 function updateTable() {
-<<<<<<< HEAD
 		//alert("hello");
-=======
->>>>>>> cd9eafba6f3ede5d2c200f97f489368c25d80beb
 
 	var toa1 = document.getElementById('toa1').value;
 	var toa2 = document.getElementById('toa2').value;
@@ -190,7 +183,7 @@ function updateTable() {
 	numtoa1 = parseInt(toa1, 10);
 	numtoa2 = parseInt(toa2, 10);
 
-	if ((toa1 < 24 && toa1 > 0) && (toa2 > 0 && toa2 < 60)) {
+	if ((toa1 < 24 && toa1 >= 0) && (toa2 >= 0 && toa2 < 60)) {
 		
 		numtoa = numtoa1 * 60 + numtoa2 // hour and min to just min
 		
@@ -199,7 +192,7 @@ function updateTable() {
 		
 		leaveby = numtoa - d;
 		leavebyhr = leaveby / 60;
-		leavebymin = leaveby % 60;
+		leavebymin = leaveby % 60 - 1;
 		
 		leavebyhrstr = leavebyhr.toPrecision(1).toString();
 		leavebyminstr = leavebymin.toPrecision(2).toString();

@@ -3,8 +3,8 @@
 
 
 #map {
-	height: 100%;
-	width: 80%;
+	height: 80%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -12,9 +12,11 @@
 
 /* Optional: Makes the sample page fill the window. */
 html, body {
+	
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	background-color: lightblue;
 }
 
 table{
@@ -24,8 +26,18 @@ table{
 }
 
 th, td{
+	padding: 15px;
+	text-align: left;
 	border: solid black;
 	border-collapse: collapse;
 	width: 25%;
 	
+}
+th{
+	background-color: #42d4f4;
+	color: white;
+
+}
+tr:nth-child(even) {
+	background-color: #daedec
 }

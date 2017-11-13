@@ -141,14 +141,11 @@ function calculateDistance()
 		{
 			if ( status === google.maps.DirectionsStatus.OK ) 
 			{
-<<<<<<< HEAD
 				googDist = request.routes[0].legs[0].distance.value/speed/60;
 				d = (d + googDist) / 2;
 				//d = Math.round(d);
-=======
 				googDist = request.routes[0].legs[0].distance.value / 60 / speed;
 				d = (d + googDist) / 2;
->>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a
 				updateTable();
 			}
 			else 
@@ -156,10 +153,7 @@ function calculateDistance()
 				alert("A kitten died");
 			}
 		});		
-<<<<<<< HEAD
 		//alert(d);
-=======
->>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a
 	}	
 }
 
@@ -170,11 +164,9 @@ function updateMap()
 }	
 
 function updateTable() {
-<<<<<<< HEAD
-		//alert("hello");
 
-	var toa1 = document.getElementById('toa1').innerHTML;
-	var toa2 = document.getElementById('toa2').innerHTML;
+	var toa1 = document.getElementById('toa1').value;
+	var toa2 = document.getElementById('toa2').value;
 	var numtoa1;
 	var numtoa2;
 	var leaveby;
@@ -201,8 +193,8 @@ function updateTable() {
 		leavebyhr = leaveby / 60;
 		leavebymin = leaveby % 60;
 		
-		leavebyhrstr = leavebyhr.toString();
-		leavebyminstr = leavebymin.toString();
+		leavebyhrstr = leavebyhr.toPrecision(1).toString();
+		leavebyminstr = leavebymin.toPrecision(2).toString();
 		
 		alert(leavebyhr);
 		alert(leavebymin);
@@ -228,7 +220,5 @@ function updateTable() {
 	
 	document.getElementById("traveltime").innerHTML = d;
 	document.getElementById("leaveby").innerHTML = leavebystr;
-=======
 	document.getElementById("traveltime").innerHTML = d.toPrecision(3);
->>>>>>> eb6a24c029d22fffc1323227d9b7641ecb89925a
 }

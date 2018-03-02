@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
   <head>
     <title>Home</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/format.css">
     
+	<div id ="description">
+      <h2>How long will it take to get there?</h1>
+    </div>
+	
   </head>
   <body>
     <div id="map">
@@ -18,11 +36,11 @@
     <p align = "center">
 		Search...
 		<input id="wheretogo" type="text">
-		<input id="updatemap" type="button" value="Update Map" onclick="updateMap();" />
-		<input id="distcalc" type="button" value="Calculate Time" onclick="calculateDistance();" />
+		<input id="updatemap" type="button" class="btn btn-primary" value="Update Map" onclick="updateMap();" />
+		<input id="distcalc" type="button" class="btn btn-primary" value="Calculate Time" onclick="calculateDistance();" />
 	</p>
 	<p align = "center">
-		<text>Speed</text>
+		<text>Speed: </text>
 		<select id="speedselect">
 			<option value=1.38112>Normal</option>
 			<option value=1.51>Fast</option>

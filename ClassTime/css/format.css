@@ -1,12 +1,19 @@
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {
-	height: 80%;
+	height: 70%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
 }
 
+#description{
+	text-align: center;
+}
+
+.button {
+	margin = 10px;
+}
 
 html, body {
 	
@@ -47,7 +54,7 @@ tr:nth-child(even) {
 }
 
 .timetext {
-	width: 15px;
+	width: 25px;
 }
 tr:nth-child(odd) {
 	background-color: #e3fcfb
